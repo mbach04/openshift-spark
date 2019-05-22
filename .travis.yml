@@ -4,6 +4,9 @@ language: go
 ## home folder is /home/travis/gopath/src/github.com/radanalyticsio/oshinko-cli
 services:
 - docker
+stages:
+  - test
+  - deploy
 matrix:
   include:
     - env: TO_TEST=openshift-spark OPENSHIFT_VERSION=v3.10
