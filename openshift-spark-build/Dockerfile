@@ -22,10 +22,6 @@ USER root
 
 
 # Install required RPMs and ensure that the packages were installed
-#RUN yum install -y java-1.8.0-openjdk wget numpy 
-    #&& yum clean all && rm -rf /var/cache/yum
-#    && rpm -q java-1.8.0-openjdk wget numpy
-
 RUN dnf install -y java-1.8.0-openjdk wget python3 python3-numpy \
 	&& dnf clean all 
 
@@ -59,6 +55,8 @@ LABEL \
 
 # Add scripts used to configure the image
 COPY modules /tmp/scripts
+# add an additional COPY directive here to layer in custom
+# jars
 
 # Custom scripts
 USER root
