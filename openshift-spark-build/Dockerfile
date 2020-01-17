@@ -16,15 +16,18 @@
 #
 # This is a Dockerfile for the radanalyticsio/openshift-spark:2.4-latest image.
 
-FROM centos:latest
+FROM centos:centos8
 
 USER root
 
 
 # Install required RPMs and ensure that the packages were installed
-RUN yum install -y java-1.8.0-openjdk wget numpy \
-    && yum clean all && rm -rf /var/cache/yum \
-    && rpm -q java-1.8.0-openjdk wget numpy
+#RUN yum install -y java-1.8.0-openjdk wget numpy 
+    #&& yum clean all && rm -rf /var/cache/yum
+#    && rpm -q java-1.8.0-openjdk wget numpy
+
+RUN dnf install -y java-1.8.0-openjdk wget python3 python3-numpy \
+	&& dnf clean all 
 
 
 # Add all artifacts to the /tmp/artifacts
